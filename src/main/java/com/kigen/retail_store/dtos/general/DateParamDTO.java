@@ -2,6 +2,7 @@ package com.kigen.retail_store.dtos.general;
 
 import java.lang.reflect.Field;
 import java.text.ParseException;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
@@ -37,7 +38,7 @@ public class DateParamDTO {
             }
         } else {
             setEndDate(LocalDateTime.now());
-            setStartDate(LocalDateTime.now().atTime(LocalTime.MIDNIGHT));
+            setStartDate(LocalDate.now().atTime(LocalTime.MIDNIGHT));
         }
     }
 
