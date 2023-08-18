@@ -88,7 +88,8 @@ CREATE TABLE IF NOT EXISTS user_roles (
 CREATE TABLE IF NOT EXISTS contact_types (
     "id" SMALLSERIAL PRIMARY KEY,
     "name" VARCHAR(50) NOT NULL UNIQUE,
-    "description" VARCHAR
+    "description" VARCHAR,
+    "regex_value" VARCHAR
 );
 
 -- contacts
