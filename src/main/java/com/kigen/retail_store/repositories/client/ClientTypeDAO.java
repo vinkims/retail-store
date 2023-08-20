@@ -1,9 +1,9 @@
-package com.kigen.retail_store.repositories;
+package com.kigen.retail_store.repositories.client;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 
-import com.kigen.retail_store.models.EClientType;
+import com.kigen.retail_store.models.client.EClientType;
 
 public interface ClientTypeDAO extends JpaRepository<EClientType, Integer>, JpaSpecificationExecutor<EClientType> {
     

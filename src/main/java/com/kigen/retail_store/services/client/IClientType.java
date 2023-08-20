@@ -7,7 +7,7 @@ import org.springframework.data.domain.Page;
 
 import com.kigen.retail_store.dtos.client.ClientTypeDTO;
 import com.kigen.retail_store.dtos.general.PageDTO;
-import com.kigen.retail_store.models.EClientType;
+import com.kigen.retail_store.models.client.EClientType;
 
 public interface IClientType {
     

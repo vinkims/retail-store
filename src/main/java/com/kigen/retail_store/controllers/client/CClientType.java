@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.kigen.retail_store.dtos.client.ClientTypeDTO;
 import com.kigen.retail_store.dtos.general.PageDTO;
-import com.kigen.retail_store.models.EClientType;
+import com.kigen.retail_store.models.client.EClientType;
 import com.kigen.retail_store.responses.SuccessPaginatedResponse;
 import com.kigen.retail_store.responses.SuccessResponse;
 import com.kigen.retail_store.services.client.IClientType;

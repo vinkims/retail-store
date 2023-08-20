@@ -13,8 +13,8 @@ import org.springframework.stereotype.Service;
 import com.kigen.retail_store.dtos.client.ClientTypeDTO;
 import com.kigen.retail_store.dtos.general.PageDTO;
 import com.kigen.retail_store.exceptions.NotFoundException;
-import com.kigen.retail_store.models.EClientType;
-import com.kigen.retail_store.repositories.ClientTypeDAO;
+import com.kigen.retail_store.models.client.EClientType;
+import com.kigen.retail_store.repositories.client.ClientTypeDAO;
 import com.kigen.retail_store.specifications.SpecBuilder;
 import com.kigen.retail_store.specifications.SpecFactory;
 
