@@ -1,4 +1,4 @@
-package com.kigen.retail_store.models;
+package com.kigen.retail_store.models.client;
 
 import java.io.Serializable;
 

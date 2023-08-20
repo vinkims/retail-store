@@ -1,7 +1,7 @@
 package com.kigen.retail_store.dtos.client;
 
 import com.kigen.retail_store.annotations.IsClientTypeNameValid;
-import com.kigen.retail_store.models.EClientType;
+import com.kigen.retail_store.models.client.EClientType;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
