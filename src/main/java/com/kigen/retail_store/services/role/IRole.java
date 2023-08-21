@@ -7,7 +7,7 @@ import org.springframework.data.domain.Page;
 
 import com.kigen.retail_store.dtos.general.PageDTO;
 import com.kigen.retail_store.dtos.role.RoleDTO;
-import com.kigen.retail_store.models.ERole;
+import com.kigen.retail_store.models.user.ERole;
 
 public interface IRole {
     

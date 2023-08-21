@@ -6,6 +6,7 @@ import java.util.Optional;
 import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
@@ -15,9 +16,9 @@ import org.springframework.stereotype.Service;
 import com.kigen.retail_store.dtos.client.ClientDTO;
 import com.kigen.retail_store.dtos.general.PageDTO;
 import com.kigen.retail_store.exceptions.NotFoundException;
-import com.kigen.retail_store.models.EStatus;
 import com.kigen.retail_store.models.client.EClient;
 import com.kigen.retail_store.models.client.EClientType;
+import com.kigen.retail_store.models.status.EStatus;
 import com.kigen.retail_store.repositories.client.ClientDAO;
 import com.kigen.retail_store.services.status.IStatus;
 import com.kigen.retail_store.specifications.SpecBuilder;
@@ -25,6 +26,9 @@ import com.kigen.retail_store.specifications.SpecFactory;
 
 @Service
 public class SClient implements IClient {
+
+    @Value(value = "${default.value.status.active-id}")
+    private Integer activeStatusId;
 
     @Autowired
     private ClientDAO clientDAO;
@@ -51,7 +55,9 @@ public class SClient implements IClient {
         setClientType(client, clientDTO.getClientTypeId());
         client.setCreatedOn(LocalDateTime.now());
         client.setName(clientDTO.getName());
-        setStatus(client, clientDTO.getStatusId());
+
+        Integer statusId = clientDTO.getStatusId() == null ? activeStatusId : clientDTO.getStatusId();
+        setStatus(client, statusId);
 
         save(client);
         return client;
@@ -131,11 +137,11 @@ public class SClient implements IClient {
 
         EClient client = getById(clientId, true);
         setClientType(client, clientDTO.getClientTypeId());
+        client.setModifiedOn(LocalDateTime.now());
         if (clientDTO.getName() != null) {
             client.setName(clientDTO.getName());
         }
         setStatus(client, clientDTO.getStatusId());
-        client.setUpdatedOn(LocalDateTime.now());
 
         save(client);
         return client;

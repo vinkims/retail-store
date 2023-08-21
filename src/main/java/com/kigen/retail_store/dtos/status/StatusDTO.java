@@ -3,7 +3,7 @@ package com.kigen.retail_store.dtos.status;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.kigen.retail_store.annotations.IsStatusNameValid;
-import com.kigen.retail_store.models.EStatus;
+import com.kigen.retail_store.models.status.EStatus;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;

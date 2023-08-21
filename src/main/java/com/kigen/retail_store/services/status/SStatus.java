@@ -13,8 +13,8 @@ import org.springframework.stereotype.Service;
 import com.kigen.retail_store.dtos.general.PageDTO;
 import com.kigen.retail_store.dtos.status.StatusDTO;
 import com.kigen.retail_store.exceptions.NotFoundException;
-import com.kigen.retail_store.models.EStatus;
-import com.kigen.retail_store.repositories.StatusDAO;
+import com.kigen.retail_store.models.status.EStatus;
+import com.kigen.retail_store.repositories.status.StatusDAO;
 import com.kigen.retail_store.specifications.SpecBuilder;
 import com.kigen.retail_store.specifications.SpecFactory;
 

@@ -7,7 +7,7 @@ import org.springframework.data.domain.Page;
 
 import com.kigen.retail_store.dtos.general.PageDTO;
 import com.kigen.retail_store.dtos.status.StatusDTO;
-import com.kigen.retail_store.models.EStatus;
+import com.kigen.retail_store.models.status.EStatus;
 
 public interface IStatus {
 

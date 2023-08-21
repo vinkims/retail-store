@@ -25,7 +25,7 @@ public class ClientDTO {
 
     private LocalDateTime createdOn;
 
-    private LocalDateTime updatedOn;
+    private LocalDateTime modifiedOn;
 
     private ClientTypeDTO clientType;
 
@@ -42,10 +42,10 @@ public class ClientDTO {
         }
         setCreatedOn(client.getCreatedOn());
         setId(client.getId());
+        setModifiedOn(client.getModifiedOn());
         setName(client.getName());
         if (client.getStatus() != null) {
             setStatus(new StatusDTO(client.getStatus()));
         }
-        setUpdatedOn(client.getUpdatedOn());
     }
 }

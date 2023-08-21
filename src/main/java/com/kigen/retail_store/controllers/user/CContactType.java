@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.kigen.retail_store.dtos.contact.ContactTypeDTO;
 import com.kigen.retail_store.dtos.general.PageDTO;
-import com.kigen.retail_store.models.EContactType;
+import com.kigen.retail_store.models.user.EContactType;
 import com.kigen.retail_store.responses.SuccessPaginatedResponse;
 import com.kigen.retail_store.responses.SuccessResponse;
 import com.kigen.retail_store.services.contact.IContactType;

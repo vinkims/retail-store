@@ -1,7 +1,7 @@
 package com.kigen.retail_store.dtos.contact;
 
 import com.kigen.retail_store.annotations.IsContactTypeNameValid;
-import com.kigen.retail_store.models.EContactType;
+import com.kigen.retail_store.models.user.EContactType;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;

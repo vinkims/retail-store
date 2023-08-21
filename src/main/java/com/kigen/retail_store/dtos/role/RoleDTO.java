@@ -1,7 +1,7 @@
 package com.kigen.retail_store.dtos.role;
 
 import com.kigen.retail_store.annotations.IsRoleNameValid;
-import com.kigen.retail_store.models.ERole;
+import com.kigen.retail_store.models.user.ERole;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
