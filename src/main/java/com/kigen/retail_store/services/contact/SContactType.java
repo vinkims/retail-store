@@ -15,8 +15,8 @@ import org.springframework.stereotype.Service;
 import com.kigen.retail_store.dtos.contact.ContactTypeDTO;
 import com.kigen.retail_store.dtos.general.PageDTO;
 import com.kigen.retail_store.exceptions.NotFoundException;
-import com.kigen.retail_store.models.EContactType;
-import com.kigen.retail_store.repositories.ContactTypeDAO;
+import com.kigen.retail_store.models.user.EContactType;
+import com.kigen.retail_store.repositories.user.ContactTypeDAO;
 import com.kigen.retail_store.specifications.SpecBuilder;
 import com.kigen.retail_store.specifications.SpecFactory;
 

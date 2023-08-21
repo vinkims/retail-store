@@ -1,4 +1,4 @@
-package com.kigen.retail_store.models;
+package com.kigen.retail_store.models.status;
 
 import java.io.Serializable;
 

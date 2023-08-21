@@ -18,7 +18,7 @@ CREATE TABLE IF NOT EXISTS clients (
     "name" VARCHAR(50) NOT NULL UNIQUE,
     "client_code" VARCHAR(50),
     "created_on" TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP,
-    "updated_on" TIMESTAMPTZ,
+    "modified_on" TIMESTAMPTZ,
     "client_type_id" SMALLINT REFERENCES client_types("id") ON DELETE SET NULL,
     "status_id" SMALLINT REFERENCES statuses("id") ON DELETE SET NULL
 );

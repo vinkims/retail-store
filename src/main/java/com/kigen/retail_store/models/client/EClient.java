@@ -3,7 +3,7 @@ package com.kigen.retail_store.models.client;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
-import com.kigen.retail_store.models.EStatus;
+import com.kigen.retail_store.models.status.EStatus;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -38,13 +38,13 @@ public class EClient implements Serializable {
     @Column(nullable = false, updatable = false, name = "id")
     private Integer id;
 
+    @Column(name = "modified_on")
+    private LocalDateTime modifiedOn;
+
     @Column(name = "name")
     private String name;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "status_id", referencedColumnName = "id")
     private EStatus status;
-
-    @Column(name = "updated_on")
-    private LocalDateTime updatedOn;
 }

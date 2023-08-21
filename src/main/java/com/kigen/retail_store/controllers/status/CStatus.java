@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.kigen.retail_store.dtos.general.PageDTO;
 import com.kigen.retail_store.dtos.status.StatusDTO;
-import com.kigen.retail_store.models.EStatus;
+import com.kigen.retail_store.models.status.EStatus;
 import com.kigen.retail_store.responses.SuccessPaginatedResponse;
 import com.kigen.retail_store.responses.SuccessResponse;
 import com.kigen.retail_store.services.status.IStatus;

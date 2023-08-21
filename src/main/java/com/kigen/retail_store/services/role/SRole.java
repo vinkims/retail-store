@@ -13,8 +13,8 @@ import org.springframework.stereotype.Service;
 import com.kigen.retail_store.dtos.general.PageDTO;
 import com.kigen.retail_store.dtos.role.RoleDTO;
 import com.kigen.retail_store.exceptions.NotFoundException;
-import com.kigen.retail_store.models.ERole;
-import com.kigen.retail_store.repositories.RoleDAO;
+import com.kigen.retail_store.models.user.ERole;
+import com.kigen.retail_store.repositories.user.RoleDAO;
 import com.kigen.retail_store.specifications.SpecBuilder;
 import com.kigen.retail_store.specifications.SpecFactory;
 

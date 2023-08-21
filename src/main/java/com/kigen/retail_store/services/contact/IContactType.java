@@ -8,7 +8,7 @@ import org.springframework.data.domain.Page;
 
 import com.kigen.retail_store.dtos.contact.ContactTypeDTO;
 import com.kigen.retail_store.dtos.general.PageDTO;
-import com.kigen.retail_store.models.EContactType;
+import com.kigen.retail_store.models.user.EContactType;
 
 public interface IContactType {
     
