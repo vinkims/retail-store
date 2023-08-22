@@ -11,6 +11,7 @@ import com.kigen.retail_store.dtos.contact.ContactDTO;
 import com.kigen.retail_store.dtos.status.StatusDTO;
 import com.kigen.retail_store.models.user.EContact;
 import com.kigen.retail_store.models.user.EUser;
+import com.kigen.retail_store.models.user.EUserAddress;
 import com.kigen.retail_store.models.user.EUserRole;
 
 import lombok.Data;
@@ -51,6 +52,8 @@ public class UserDTO {
 
     private Integer statusId;
 
+    private List<UserAddressDTO> userAddresses;
+
     public UserDTO(EUser user) {
         setAccountNumber(user.getAccountNumber());
         if (user.getClient() != null) {
@@ -67,6 +70,7 @@ public class UserDTO {
         if (user.getStatus() != null) {
             setStatus(new StatusDTO(user.getStatus()));
         }
+        setUserAddressesData(user.getUserAddresses());
         setUserRolesData(user.getUserRoles());
     }
 
@@ -76,6 +80,15 @@ public class UserDTO {
         contacts = new ArrayList<>();
         for (EContact contact : contactList) {
             contacts.add(new ContactDTO(contact));
+        }
+    }
+
+    private void setUserAddressesData(List<EUserAddress> userAddressesList) {
+        if (userAddressesList == null || userAddressesList.isEmpty()) { return; }
+
+        userAddresses = new ArrayList<>();
+        for (EUserAddress userAddress : userAddressesList) {
+            userAddresses.add(new UserAddressDTO(userAddress));
         }
     }
 

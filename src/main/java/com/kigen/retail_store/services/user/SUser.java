@@ -19,6 +19,7 @@ import org.springframework.stereotype.Service;
 
 import com.kigen.retail_store.dtos.contact.ContactDTO;
 import com.kigen.retail_store.dtos.general.PageDTO;
+import com.kigen.retail_store.dtos.user.UserAddressDTO;
 import com.kigen.retail_store.dtos.user.UserDTO;
 import com.kigen.retail_store.dtos.user.UserRoleDTO;
 import com.kigen.retail_store.exceptions.NotFoundException;
@@ -27,6 +28,7 @@ import com.kigen.retail_store.models.status.EStatus;
 import com.kigen.retail_store.models.user.EContact;
 import com.kigen.retail_store.models.user.ERole;
 import com.kigen.retail_store.models.user.EUser;
+import com.kigen.retail_store.models.user.EUserAddress;
 import com.kigen.retail_store.models.user.EUserRole;
 import com.kigen.retail_store.repositories.user.UserDAO;
 import com.kigen.retail_store.services.client.IClient;
@@ -60,6 +62,9 @@ public class SUser implements IUser {
     private IStatus sStatus;
 
     @Autowired
+    private IUserAddress sUserAddress;
+
+    @Autowired
     private IUserRole sUserRole;
 
     @Autowired
@@ -80,6 +85,7 @@ public class SUser implements IUser {
         Integer statusId = userDTO.getStatusId() == null ? activeStatusId : userDTO.getStatusId();
         setStatus(user, statusId);
         
+        setUserAddresses(user, userDTO.getUserAddresses());
         setUserRoles(user, userDTO.getUserRoles());
 
         save(user);
@@ -174,6 +180,22 @@ public class SUser implements IUser {
         }
     }
 
+    private void setUserAddresses(EUser user, List<UserAddressDTO> userAddresses) {
+
+        if (userAddresses != null || !userAddresses.isEmpty()) {
+            List<EUserAddress> userAddressesList = new ArrayList<>();
+            for (UserAddressDTO userAddressDTO : userAddresses) {
+                EUserAddress userAddress = sUserAddress.create(user, userAddressDTO);
+                // If the address is marked as default remove the previous default address
+                if (userAddressDTO.getIsDefault()) {
+                    sUserAddress.removeDefault(user.getId());
+                }
+                userAddressesList.add(userAddress);
+            }
+            user.setUserAddresses(userAddressesList);
+        }
+    }
+
     private void setUserRoles(EUser user, List<UserRoleDTO> userRoles) {
         
         if (userRoles != null || !userRoles.isEmpty()) {
@@ -207,6 +229,7 @@ public class SUser implements IUser {
         setContacts(user, userDTO.getContacts());
         user.setModifiedOn(LocalDateTime.now());
         setStatus(user, userDTO.getStatusId());
+        setUserAddresses(user, userDTO.getUserAddresses());
         setUserRoles(user, userDTO.getUserRoles());
 
         save(user);

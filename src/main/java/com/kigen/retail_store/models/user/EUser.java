@@ -69,6 +69,9 @@ public class EUser implements Serializable {
     private EStatus status;
 
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+    private List<EUserAddress> userAddresses;
+
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
     private List<EUserRole> userRoles;
 
     public void setPassword(String passcode) {
