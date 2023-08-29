@@ -30,6 +30,9 @@ public class SClient implements IClient {
     @Value(value = "${default.value.status.active-id}")
     private Integer activeStatusId;
 
+    @Value(value = "${default.value.client.retailer-client-type-id}")
+    private Integer retailerClientTypeId;
+
     @Autowired
     private ClientDAO clientDAO;
 
@@ -52,7 +55,10 @@ public class SClient implements IClient {
 
         EClient client = new EClient();
         client.setClientCode(generateCode());
-        setClientType(client, clientDTO.getClientTypeId());
+
+        Integer clientTypeId = clientDTO.getClientTypeId() == null ? retailerClientTypeId : clientDTO.getClientTypeId();
+        setClientType(client, clientTypeId);
+
         client.setCreatedOn(LocalDateTime.now());
         client.setName(clientDTO.getName());
 

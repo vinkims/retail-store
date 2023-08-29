@@ -1,7 +1,6 @@
 package com.kigen.retail_store.models.user;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -22,9 +21,6 @@ public class EContact implements Serializable {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "contact_type_id", referencedColumnName = "id")
     private EContactType contactType;
-
-    @Column(name = "created_on")
-    private LocalDateTime createdOn;
 
     @Id
     @Column(name = "value")

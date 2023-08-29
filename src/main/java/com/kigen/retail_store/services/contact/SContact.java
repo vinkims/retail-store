@@ -1,6 +1,5 @@
 package com.kigen.retail_store.services.contact;
 
-import java.time.LocalDateTime;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +31,6 @@ public class SContact implements IContact {
         
         EContact contact = new EContact();
         setContactType(contact, contactDTO.getContactTypeId());
-        contact.setCreatedOn(LocalDateTime.now());
         contact.setUser(user);
         contact.setValue(contactDTO.getValue());
 

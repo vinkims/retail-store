@@ -14,7 +14,7 @@ public interface UserDAO extends JpaRepository<EUser, Integer>, JpaSpecification
         value = "SELECT * FROM users u "
             + "LEFT JOIN contacts c ON c.user_id = u.id "
             + "WHERE u.id = :userId "
-            + "OR c.value = contactValue",
+            + "OR c.value = :contactValue",
         nativeQuery = true
     )
     Optional<EUser> findByIdOrContactValue(Integer userId, String contactValue);

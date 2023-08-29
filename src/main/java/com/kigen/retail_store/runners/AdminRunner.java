@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
@@ -17,6 +19,8 @@ import com.kigen.retail_store.services.user.IUser;
 
 @Component
 public class AdminRunner implements CommandLineRunner {
+
+    Logger logger = LoggerFactory.getLogger(AdminRunner.class);
 
     @Value(value = "${default.value.user.admin-email}")
     private String adminEmail;
@@ -39,15 +43,15 @@ public class AdminRunner implements CommandLineRunner {
         String firstName = "system";
         String lastName = "admin";
 
-        log.info("\n>>> check if admin user exists")
+        logger.info("\n>>> check if admin user exists");
 
         Optional<EUser> user = sUser.getByContactValue(adminEmail);
         if (user.isPresent()) {
-            log.info("\n<<< Admin user exists");
+            logger.info("\n<<< Admin user exists");
             return;
         }
 
-        log.info("\n<<< Creating admin user");
+        logger.info("\n<<< Creating admin user");
 
         ContactDTO contactDTO = new ContactDTO();
         contactDTO.setContactTypeId(emailContactTypeId);
@@ -69,7 +73,7 @@ public class AdminRunner implements CommandLineRunner {
 
         EUser admin = sUser.create(userDTO);
 
-        log.info("\nSystem Admin created: id=>{}, name=>{}, email=>{}", 
+        logger.info("\nSystem Admin created: id=>{}, name=>{}, email=>{}", 
             admin.getId(),
             String.format("%s %s", firstName, lastName),
             adminEmail);

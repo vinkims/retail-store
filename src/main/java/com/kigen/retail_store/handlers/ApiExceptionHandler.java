@@ -35,7 +35,6 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
      * @param request
      * @return
      */
-    @Override
     public ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex, HttpHeaders headers, 
             HttpStatus status, WebRequest request) {
 

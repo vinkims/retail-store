@@ -25,7 +25,7 @@ public class UnhandledExceptionHandler extends ResponseEntityExceptionHandler {
     public ResponseEntity<Object> handleUnhandledExceptions(Exception ex, WebRequest request) {
 
         HttpStatus status = HttpStatus.INTERNAL_SERVER_ERROR;
-        String message = "Something wen wrong. Ensure you are sending a valid request and try again.";
+        String message = "Something went wrong. Ensure you are sending a valid request and try again.";
         GeneralErrorResponse basicErrorResponse = new GeneralErrorResponse(new Date().toString(), message, status.value());
 
         logger.error(String.format("(%s) -- [MSG] %s", status.value(), message));

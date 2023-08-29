@@ -20,5 +20,6 @@ public class InvalidArgumentResponse {
         this.timestamp = timestamp;
         this.message = message;
         this.errors = errors;
+        this.status = status;
     }
 }

@@ -74,7 +74,6 @@ public class SUser implements IUser {
     public EUser create(UserDTO userDTO) {
         EUser user = new EUser();
         user.setAccountNumber(generateAccountNumber());
-        setContacts(user, userDTO.getContacts());
         setClient(user, userDTO.getClientId());
         user.setCreatedOn(LocalDateTime.now());
         user.setFirstName(userDTO.getFirstName());
@@ -84,11 +83,13 @@ public class SUser implements IUser {
 
         Integer statusId = userDTO.getStatusId() == null ? activeStatusId : userDTO.getStatusId();
         setStatus(user, statusId);
-        
+
+        save(user);
+
+        setContacts(user, userDTO.getContacts());
         setUserAddresses(user, userDTO.getUserAddresses());
         setUserRoles(user, userDTO.getUserRoles());
 
-        save(user);
         return user;
     }
 
@@ -182,7 +183,7 @@ public class SUser implements IUser {
 
     private void setUserAddresses(EUser user, List<UserAddressDTO> userAddresses) {
 
-        if (userAddresses != null || !userAddresses.isEmpty()) {
+        if (userAddresses != null) {
             List<EUserAddress> userAddressesList = new ArrayList<>();
             for (UserAddressDTO userAddressDTO : userAddresses) {
                 EUserAddress userAddress = sUserAddress.create(user, userAddressDTO);
@@ -198,7 +199,7 @@ public class SUser implements IUser {
 
     private void setUserRoles(EUser user, List<UserRoleDTO> userRoles) {
         
-        if (userRoles != null || !userRoles.isEmpty()) {
+        if (userRoles != null) {
             List<EUserRole> userRolesList = new ArrayList<>();
             for (UserRoleDTO userRoleDTO : userRoles) {
                 ERole role = sRole.getById(userRoleDTO.getRoleId(), true);

@@ -97,7 +97,6 @@ CREATE TABLE IF NOT EXISTS contact_types (
 -- contacts
 CREATE TABLE IF NOT EXISTS contacts (
     "user_id" INTEGER NOT NULL REFERENCES users("id") ON DELETE CASCADE,
-    "created_on" TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP,
     "contact_type_id" SMALLINT REFERENCES contact_types("id") ON DELETE SET NULL,
     "value" VARCHAR(200) PRIMARY KEY NOT NULL UNIQUE
 );
@@ -250,7 +249,7 @@ CREATE TABLE IF NOT EXISTS cart_items (
     "id" SERIAL PRIMARY KEY,
     "session_id" INTEGER REFERENCES shopping_sessions("id") ON DELETE CASCADE,
     "product_item_id" INTEGER REFERENCES product_items("id") ON DELETE SET NULL,
-    "quantity" INTEGER DEFAULT 0;
+    "quantity" INTEGER DEFAULT 0,
     "created_on" TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP,
     "modified_on" TIMESTAMPTZ,
     "status_id" SMALLINT REFERENCES statuses("id") ON DELETE SET NULL
