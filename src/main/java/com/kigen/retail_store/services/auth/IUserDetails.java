@@ -6,8 +6,8 @@ import com.kigen.retail_store.models.user.EUser;
 
 public interface IUserDetails extends UserDetailsService {
     
-    Boolean checkIsClientAdmin()
-    
+    Boolean checkIsClientAdmin();
+
     Boolean checkIsSystemAdmin();
 
     EUser getActiveUserByContact();
