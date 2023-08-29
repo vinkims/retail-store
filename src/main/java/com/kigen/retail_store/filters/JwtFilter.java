@@ -15,7 +15,7 @@ import org.springframework.web.filter.OncePerRequestFilter;
 import org.springframework.web.util.ContentCachingRequestWrapper;
 import org.springframework.web.util.ContentCachingResponseWrapper;
 
-import com.kigen.retail_store.services.auth.SUserDetails;
+import com.kigen.retail_store.services.auth.IUserDetails;
 import com.kigen.retail_store.utils.JwtUtil;
 
 import jakarta.servlet.FilterChain;
@@ -41,7 +41,7 @@ public class JwtFilter extends OncePerRequestFilter {
     private JwtUtil jwtUtil;
 
     @Autowired
-    private SUserDetails sUserDetails;
+    private IUserDetails sUserDetails;
     
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)

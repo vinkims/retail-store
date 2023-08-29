@@ -43,7 +43,7 @@ public class SAuth implements IAuth {
     private JwtUtil jwtUtil;
 
     @Autowired
-    private SUserDetails sUserDetails;
+    private IUserDetails sUserDetails;
 
     private List<UserRoleDTO> userRoles;
     
