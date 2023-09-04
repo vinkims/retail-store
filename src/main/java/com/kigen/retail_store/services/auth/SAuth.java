@@ -15,9 +15,9 @@ import org.springframework.stereotype.Service;
 
 import com.kigen.retail_store.dtos.auth.AuthDTO;
 import com.kigen.retail_store.dtos.auth.SignoutDTO;
-import com.kigen.retail_store.dtos.client.ClientDTO;
 import com.kigen.retail_store.dtos.user.UserRoleDTO;
 import com.kigen.retail_store.exceptions.InvalidInputException;
+import com.kigen.retail_store.models.client.EClient;
 import com.kigen.retail_store.models.user.EBlacklistToken;
 import com.kigen.retail_store.models.user.EUser;
 import com.kigen.retail_store.models.user.EUserRole;
@@ -70,12 +70,20 @@ public class SAuth implements IAuth {
             claims.put("userRoles", userRoles);
         }
         if (user.getClient() != null) {
-            claims.put("client", new ClientDTO(user.getClient()));
+            claims.put("client", getClient(user.getClient()));
         }
 
         final String token = jwtUtil.generateToken(userDetails, claims);
 
         return token;
+    }
+
+    public Map<String, Object> getClient(EClient client) {
+        Map<String, Object> clientMap = new HashMap<>();
+        clientMap.put("id", client.getId());
+        clientMap.put("clientCode", client.getClientCode());
+        clientMap.put("name", client.getName());
+        return clientMap;
     }
 
     @Override
