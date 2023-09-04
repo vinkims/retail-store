@@ -9,9 +9,11 @@ import com.kigen.retail_store.dtos.general.PageDTO;
 import com.kigen.retail_store.dtos.product.ProductCategoryDTO;
 import com.kigen.retail_store.models.product.EProductCategory;
 
-public interface IproductCategory {
+public interface IProductCategory {
     
     Boolean checkExistsByName(String name);
+
+    Boolean checkIsOwner(Integer productCategoryId)
 
     EProductCategory create(ProductCategoryDTO categoryDTO);
 

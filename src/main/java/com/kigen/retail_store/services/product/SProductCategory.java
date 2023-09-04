@@ -16,13 +16,15 @@ import com.kigen.retail_store.dtos.product.ProductCategoryDTO;
 import com.kigen.retail_store.exceptions.NotFoundException;
 import com.kigen.retail_store.models.client.EClient;
 import com.kigen.retail_store.models.product.EProductCategory;
+import com.kigen.retail_store.models.user.EUser;
 import com.kigen.retail_store.repositories.product.ProductCategoryDAO;
+import com.kigen.retail_store.services.auth.IUserDetails;
 import com.kigen.retail_store.services.client.IClient;
 import com.kigen.retail_store.specifications.SpecBuilder;
 import com.kigen.retail_store.specifications.SpecFactory;
 
 @Service
-public class SProductCategory implements IproductCategory {
+public class SProductCategory implements IProductCategory {
 
     @Autowired
     private ProductCategoryDAO productCategoryDAO;
@@ -31,11 +33,21 @@ public class SProductCategory implements IproductCategory {
     private IClient sClient;
 
     @Autowired
+    private IUserDetails sUserDetails;
+
+    @Autowired
     private SpecFactory specFactory;
 
     @Override
     public Boolean checkExistsByName(String name) {
         return productCategoryDAO.existsByName(name);
+    }
+
+    @Override
+    public Boolean checkIsOwner(Integer productCategoryId) {
+        EProductCategory productCategory = getById(productCategoryId, true);
+        EUser user = sUserDetails.getActiveUserByContact();
+        return user.getClient() == productCategory.getClient();
     }
 
     @Override
