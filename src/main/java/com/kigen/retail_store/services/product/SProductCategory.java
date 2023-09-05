@@ -65,6 +65,12 @@ public class SProductCategory implements IProductCategory {
     }
 
     @Override
+    public void delete(Integer productTypeId) {
+        EProductCategory productCategory = getById(productTypeId, true);
+        productCategoryDAO.delete(productCategory);
+    }
+
+    @Override
     public Optional<EProductCategory> getById(Integer categoryId) {
         return productCategoryDAO.findById(categoryId);
     }
@@ -120,7 +126,6 @@ public class SProductCategory implements IProductCategory {
 
         EProductCategory productCategory = getById(categoryId, true);
 
-        setClient(productCategory, categoryDTO.getClientId());
         if (categoryDTO.getDescription() != null) {
             productCategory.setDescription(categoryDTO.getDescription());
         }

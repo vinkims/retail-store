@@ -13,9 +13,11 @@ public interface IProductCategory {
     
     Boolean checkExistsByName(String name);
 
-    Boolean checkIsOwner(Integer productCategoryId)
+    Boolean checkIsOwner(Integer productCategoryId);
 
     EProductCategory create(ProductCategoryDTO categoryDTO);
+
+    void delete(Integer productTypeId);
 
     Optional<EProductCategory> getById(Integer categoryId);
 

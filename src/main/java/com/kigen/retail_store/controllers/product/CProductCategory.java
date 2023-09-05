@@ -11,6 +11,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -103,6 +104,16 @@ public class CProductCategory {
         return ResponseEntity
             .ok()
             .body(new SuccessResponse(200, "successfully updated product category", new ProductCategoryDTO(productCategory)));
+    }
+
+    @DeleteMapping(path = "/{categoryId}", produces = "application/json")
+    public ResponseEntity<SuccessResponse> deleteProductCategory(@PathVariable Integer categoryId) {
+
+        sProductCategory.delete(categoryId);
+
+        return ResponseEntity
+            .ok()
+            .body(new SuccessResponse(200, "successfully deleted product category", ""));
     }
 
     private void checkOwner(Integer categoryId) {
