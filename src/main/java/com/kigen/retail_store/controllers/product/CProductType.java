@@ -44,6 +44,11 @@ public class CProductType {
     @PostMapping(path = "", consumes = "application/json", produces = "application/json")
     public ResponseEntity<SuccessResponse> createProductType(@RequestBody ProductTypeDTO productTypeDTO) throws URISyntaxException {
 
+        EUser user = sUserDetails.getActiveUserByContact();
+        if (user.getClient() != null) {
+            productTypeDTO.setClientId(user.getClient().getId());
+        }
+        
         EProductType productType = sProductType.create(productTypeDTO);
 
         return ResponseEntity
