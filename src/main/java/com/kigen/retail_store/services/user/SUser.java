@@ -211,7 +211,8 @@ public class SUser implements IUser {
     }
 
     @Override
-    public EUser update(String userValue, UserDTO userDTO) throws IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException {
+    public EUser update(String userValue, UserDTO userDTO) throws IllegalAccessException, 
+            IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException {
 
         EUser user = getByIdOrContactValue(userValue, true);
 
